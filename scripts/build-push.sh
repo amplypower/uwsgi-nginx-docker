@@ -2,7 +2,7 @@
 
 set -e
 
-use_tag="arberx/uwsgi-nginx:$NAME"
+use_tag="amplypower/uwsgi-nginx:$NAME"
 use_dated_tag="${use_tag}-$(date -I)"
 
 docker build -t "$use_tag" "$BUILD_PATH"
