@@ -18,7 +18,7 @@ set -x \
     && apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
     && \
-    NGINX_GPGKEYS="573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 8540A6F18833A80E9C1653A42FD21310B49F6B46 9E9BE90EACBCDE69FE9B204CBCDCD8A38D88A2B3"; \
+    NGINX_GPGKEYS="8540A6F18833A80E9C1653A42FD21310B49F6B46 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 9E9BE90EACBCDE69FE9B204CBCDCD8A38D88A2B3"; \
     NGINX_GPGKEY_PATH=/etc/apt/keyrings/nginx-archive-keyring.gpg; \
     export GNUPGHOME="$(mktemp -d)"; \
     found=''; \
@@ -47,7 +47,7 @@ set -x \
     && case "$dpkgArch" in \
         amd64|arm64) \
             echo "deb [signed-by=$NGINX_GPGKEY_PATH] https://nginx.org/packages/mainline/debian/ bookworm nginx" >> /etc/apt/sources.list.d/nginx.list \
-            && apt-get --allow-unauthenticated update \
+            && apt-get update \
             ;; \
         *) \
             tempDir="$(mktemp -d)" \
